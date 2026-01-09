@@ -7,6 +7,7 @@
 UEnemyAttributeSet::UEnemyAttributeSet()
 {
 	InitHealth(100.0f);
+	InitMaxHealth(100.0f);
 }
 
 void UEnemyAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue)

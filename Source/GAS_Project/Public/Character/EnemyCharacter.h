@@ -33,7 +33,7 @@ protected:
 	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent = nullptr;
 
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
-	TObjectPtr<UWidgetComponent> BarWidgetComponent = nullptr;
+	TObjectPtr<UWidgetComponent> HPWidgetComponent = nullptr;
 
 private:
 	UPROPERTY()

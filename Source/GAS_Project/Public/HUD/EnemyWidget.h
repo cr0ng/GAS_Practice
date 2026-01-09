@@ -4,7 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "BarWidget.generated.h"
+#include "Interface/Resource.h"
+#include "EnemyWidget.generated.h"
 
 /**
  * 
@@ -14,24 +15,24 @@ class UProgressBar;
 class UTextBlock;
 
 UCLASS()
-class GAS_PROJECT_API UBarWidget : public UUserWidget
+class GAS_PROJECT_API UEnemyWidget : public UUserWidget, public IResource
 {
 	GENERATED_BODY()
+
 public:
-	void UpdateCurrent(float InValue);
-	void UpdateMax(float InValue);
-
-	UFUNCTION(BlueprintCallable)
-	void SetProgressBarColor(FLinearColor Color);
-
+	virtual void UpdateCurrent_Implementation(float InValue) override;
+	virtual void UpdateMax_Implementation(float InValue) override;
 protected:
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UProgressBar> HPManaBar = nullptr;
+	TObjectPtr<UProgressBar> HPBar = nullptr;
 
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UTextBlock> Current = nullptr;
 
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UTextBlock> Max = nullptr;
-	
+
+private:
+	float MaxValue = 1.0f;
+
 };

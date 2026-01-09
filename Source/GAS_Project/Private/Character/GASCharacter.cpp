@@ -4,6 +4,7 @@
 #include "Character/GASCharacter.h"
 #include "AbilitySystemComponent.h"
 #include "GameAbilitySystem/AttributeSet/PlayerAttributeSet.h"
+#include "Interface/Resource.h"
 
 // Sets default values
 AGASCharacter::AGASCharacter()

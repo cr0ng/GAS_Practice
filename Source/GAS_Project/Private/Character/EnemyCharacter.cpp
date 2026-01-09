@@ -4,6 +4,8 @@
 #include "Character/EnemyCharacter.h"
 #include "AbilitySystemComponent.h"
 #include "GameAbilitySystem/AttributeSet/EnemyAttributeSet.h"
+#include "Components/WidgetComponent.h"
+#include "Interface/EnemyResource.h"
 
 // Sets default values
 AEnemyCharacter::AEnemyCharacter()
@@ -14,9 +16,9 @@ AEnemyCharacter::AEnemyCharacter()
 	AbilitySystemComponent = CreateDefaultSubobject<UAbilitySystemComponent>(TEXT("AbilitySystemComponent"));
 	EnemyAttributeSet = CreateDefaultSubobject<UEnemyAttributeSet>(TEXT("EnemyAttributeSet"));
 
-	BarWidgetComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("BarWidget"));
-	BarWidgetComponent->SetupAttachment(GetMesh());
-	BarWidgetComponent->SetRelativeLocation(FVector(0, 0, 120.f));
+	HPWidgetComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("HPWidget"));
+	HPWidgetComponent->SetupAttachment(GetMesh());
+	HPWidgetComponent->SetRelativeLocation(FVector(0, 0, 120.f));
 }
 
 // Called when the game starts or when spawned
@@ -31,7 +33,14 @@ void AEnemyCharacter::BeginPlay()
 
 	if (EnemyAttributeSet)
 	{
-		EnemyAttributeSet->SetHealth(50.0f);
+		if (HPWidgetComponent && HPWidgetComponent->GetWidget())
+		{
+			if (HPWidgetComponent->GetWidget()->Implements<UEnemyResource>())
+			{
+				IEnemyResource::Execute_UpdateMaxHP(HPWidgetComponent->GetWidget(),EnemyAttributeSet->GetMaxHealth());
+				IEnemyResource::Execute_UpdateCurrentHP(HPWidgetComponent->GetWidget(),EnemyAttributeSet->GetHealth());
+			}
+		}
 	}
 	
 }
