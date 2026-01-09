@@ -7,7 +7,7 @@
 #include "AbilitySystemInterface.h"
 #include "GASCharacter.generated.h"
 
-class UResourceAttributeSet;
+class UPlayerAttributeSet;
 
 UCLASS()
 class GAS_PROJECT_API AGASCharacter : public ACharacter, public IAbilitySystemInterface
@@ -33,5 +33,5 @@ protected:
 
 private:
 	UPROPERTY()
-	TObjectPtr<UResourceAttributeSet> ResourceAttributeSet = nullptr;
+	TObjectPtr<UPlayerAttributeSet> PlayerAttributeSet = nullptr;
 };

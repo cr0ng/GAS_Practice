@@ -1,17 +1,17 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "GameAbilitySystem/AttributeSet/ResourceAttributeSet.h"
+#include "GameAbilitySystem/AttributeSet/PlayerAttributeSet.h"
 #include "GameplayEffectExtension.h"
 
-UResourceAttributeSet::UResourceAttributeSet()
+UPlayerAttributeSet::UPlayerAttributeSet()
 {
 	InitMana(100.0f);
 
 }
 
 // 값 검증 및 제한 부분(수학적 처리)
-void UResourceAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue)
+void UPlayerAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue)
 {
 	Super::PreAttributeChange(Attribute, NewValue);
 
@@ -25,7 +25,7 @@ void UResourceAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribu
 }
 
 // 게임 로직 실행 부분
-void UResourceAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)
+void UPlayerAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)
 {
 	Super::PostGameplayEffectExecute(Data);
 
@@ -38,3 +38,5 @@ void UResourceAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCa
 		}
 	}
 }
+
+

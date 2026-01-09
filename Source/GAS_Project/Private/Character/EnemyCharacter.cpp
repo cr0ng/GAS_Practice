@@ -12,7 +12,11 @@ AEnemyCharacter::AEnemyCharacter()
 	PrimaryActorTick.bCanEverTick = true;
 
 	AbilitySystemComponent = CreateDefaultSubobject<UAbilitySystemComponent>(TEXT("AbilitySystemComponent"));
-	EnemyAttributeSet = CreateDefaultSubobject<UEnemyAttributeSet>(TEXT("Resource"));
+	EnemyAttributeSet = CreateDefaultSubobject<UEnemyAttributeSet>(TEXT("EnemyAttributeSet"));
+
+	BarWidgetComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("BarWidget"));
+	BarWidgetComponent->SetupAttachment(GetMesh());
+	BarWidgetComponent->SetRelativeLocation(FVector(0, 0, 120.f));
 }
 
 // Called when the game starts or when spawned

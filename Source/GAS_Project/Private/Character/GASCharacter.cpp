@@ -3,7 +3,7 @@
 
 #include "Character/GASCharacter.h"
 #include "AbilitySystemComponent.h"
-#include "GameAbilitySystem/AttributeSet/ResourceAttributeSet.h"
+#include "GameAbilitySystem/AttributeSet/PlayerAttributeSet.h"
 
 // Sets default values
 AGASCharacter::AGASCharacter()
@@ -12,7 +12,7 @@ AGASCharacter::AGASCharacter()
 	PrimaryActorTick.bCanEverTick = true;
 
 	AbilitySystemComponent = CreateDefaultSubobject<UAbilitySystemComponent>(TEXT("AbilitySystemComponent"));
-	ResourceAttributeSet = CreateDefaultSubobject<UResourceAttributeSet>(TEXT("Resource"));
+	PlayerAttributeSet = CreateDefaultSubobject<UPlayerAttributeSet>(TEXT("PlayerAttributeSet"));
 }
 
 // Called when the game starts or when spawned
@@ -25,9 +25,9 @@ void AGASCharacter::BeginPlay()
 		AbilitySystemComponent->InitAbilityActorInfo(this, this);
 	}
 
-	if (ResourceAttributeSet)
+	if (PlayerAttributeSet)
 	{
-		ResourceAttributeSet->SetMana(50.0f);
+		PlayerAttributeSet->SetMana(50.0f);
 	}
 }
 

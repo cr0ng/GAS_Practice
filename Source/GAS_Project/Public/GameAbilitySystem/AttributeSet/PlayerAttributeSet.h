@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "AttributeSet.h"
 #include "AbilitySystemComponent.h"
-#include "ResourceAttributeSet.generated.h"
+#include "PlayerAttributeSet.generated.h"
 
 /**
  * 
@@ -18,19 +18,19 @@
 	GAMEPLAYATTRIBUTE_VALUE_INITTER(PropertyName) 
 
 UCLASS()
-class GAS_PROJECT_API UResourceAttributeSet : public UAttributeSet
+class GAS_PROJECT_API UPlayerAttributeSet : public UAttributeSet
 {
 	GENERATED_BODY()
 	
 public:
-	UResourceAttributeSet();
+	UPlayerAttributeSet();
 
 	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
 	virtual void PostGameplayEffectExecute(const struct FGameplayEffectModCallbackData& Data) override;
 
 	UPROPERTY(BlueprintReadOnly, Category = "Attribute")
 	FGameplayAttributeData Mana;
-	ATTRIBUTE_ACCESSORS(UResourceAttributeSet, Mana)
+	ATTRIBUTE_ACCESSORS(UPlayerAttributeSet, Mana)
 
 
 
