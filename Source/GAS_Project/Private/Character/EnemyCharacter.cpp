@@ -5,7 +5,6 @@
 #include "AbilitySystemComponent.h"
 #include "GameAbilitySystem/AttributeSet/EnemyAttributeSet.h"
 #include "Components/WidgetComponent.h"
-#include "Interface/EnemyResource.h"
 
 // Sets default values
 AEnemyCharacter::AEnemyCharacter()
@@ -35,11 +34,7 @@ void AEnemyCharacter::BeginPlay()
 	{
 		if (HPWidgetComponent && HPWidgetComponent->GetWidget())
 		{
-			if (HPWidgetComponent->GetWidget()->Implements<UEnemyResource>())
-			{
-				IEnemyResource::Execute_UpdateMaxHP(HPWidgetComponent->GetWidget(),EnemyAttributeSet->GetMaxHealth());
-				IEnemyResource::Execute_UpdateCurrentHP(HPWidgetComponent->GetWidget(),EnemyAttributeSet->GetHealth());
-			}
+			
 		}
 	}
 	

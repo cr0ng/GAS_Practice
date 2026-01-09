@@ -5,15 +5,3 @@
 #include "Components/TextBlock.h"
 #include "Components/ProgressBar.h"
 
-void UEnemyWidget::UpdateCurrent_Implementation(float InValue)
-{
-	UE_LOG(LogTemp, Log, TEXT("UpdateCurrentHP_Implementation 실행"));
-	Current->SetText(FText::AsNumber(FMath::RoundToInt(InValue)));
-	HPBar->SetPercent(InValue / MaxValue);
-}
-
-void UEnemyWidget::UpdateMax_Implementation(float InValue)
-{
-	Max->SetText(FText::AsNumber(FMath::RoundToInt(InValue)));
-	MaxValue = InValue;
-}
