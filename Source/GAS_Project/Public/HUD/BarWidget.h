@@ -19,13 +19,16 @@ class GAS_PROJECT_API UBarWidget : public UUserWidget, public IResource
 {
 	GENERATED_BODY()
 public:
+	UFUNCTION(BlueprintCallable)
+	void SetProgressColor(FLinearColor InColor);
+
 	virtual void UpdateCurrent_Implementation(float InValue) override;
 	virtual void UpdateMax_Implementation(float InValue) override;
 	
 protected:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UProgressBar> StatusProgressBar = nullptr;
-	
+
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UTextBlock> Current = nullptr;
 
@@ -33,5 +36,6 @@ protected:
 	TObjectPtr<UTextBlock> Max = nullptr;
 
 private:
+	float CurrentValue = 0.0f;
 	float MaxValue = 1.0f;
 };

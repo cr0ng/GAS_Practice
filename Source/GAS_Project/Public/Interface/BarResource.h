@@ -22,4 +22,15 @@ class GAS_PROJECT_API IBarResource
 
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Resource")
+	void UpdateCurrentHealth(float InValue);
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Resource")
+	void UpdateMaxHealth(float InValue);
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Resource")
+	void UpdateCurrentMana(float InValue);
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Resource")
+	void UpdateMaxMana(float InValue);
 };

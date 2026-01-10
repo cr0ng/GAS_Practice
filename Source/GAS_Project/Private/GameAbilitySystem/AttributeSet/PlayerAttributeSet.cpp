@@ -7,6 +7,7 @@
 UPlayerAttributeSet::UPlayerAttributeSet()
 {
 	InitMana(100.0f);
+	InitMaxMana(100.0f);
 
 }
 

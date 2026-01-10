@@ -5,6 +5,7 @@
 #include "AbilitySystemComponent.h"
 #include "GameAbilitySystem/AttributeSet/EnemyAttributeSet.h"
 #include "Components/WidgetComponent.h"
+#include "Interface/BarResource.h"
 
 // Sets default values
 AEnemyCharacter::AEnemyCharacter()
@@ -13,8 +14,8 @@ AEnemyCharacter::AEnemyCharacter()
 	PrimaryActorTick.bCanEverTick = true;
 
 	AbilitySystemComponent = CreateDefaultSubobject<UAbilitySystemComponent>(TEXT("AbilitySystemComponent"));
-	EnemyAttributeSet = CreateDefaultSubobject<UEnemyAttributeSet>(TEXT("EnemyAttributeSet"));
-
+	//EnemyAttributeSet = CreateDefaultSubobject<UEnemyAttributeSet>(TEXT("EnemyAttributeSet"));
+	
 	HPWidgetComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("HPWidget"));
 	HPWidgetComponent->SetupAttachment(GetMesh());
 	HPWidgetComponent->SetRelativeLocation(FVector(0, 0, 120.f));
@@ -32,9 +33,14 @@ void AEnemyCharacter::BeginPlay()
 
 	if (EnemyAttributeSet)
 	{
+		UE_LOG(LogTemp, Warning, TEXT("EnemyAttributeSet"));
 		if (HPWidgetComponent && HPWidgetComponent->GetWidget())
 		{
-			
+			if (HPWidgetComponent->GetWidget()->Implements<UBarResource>())
+			{
+				IBarResource::Execute_UpdateMaxHealth(HPWidgetComponent->GetWidget(), EnemyAttributeSet->GetMaxHealth());
+				IBarResource::Execute_UpdateCurrentHealth(HPWidgetComponent->GetWidget(), EnemyAttributeSet->GetHealth());
+			}
 		}
 	}
 	

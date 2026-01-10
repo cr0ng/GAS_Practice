@@ -32,6 +32,10 @@ public:
 	FGameplayAttributeData Mana;
 	ATTRIBUTE_ACCESSORS(UPlayerAttributeSet, Mana)
 
+	UPROPERTY(BlueprintReadOnly, Category = "Attribute")
+	FGameplayAttributeData MaxMana;
+	ATTRIBUTE_ACCESSORS(UPlayerAttributeSet, MaxMana)
+
 
 
 };
